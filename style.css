@@ -568,3 +568,148 @@ body.high-contrast .tab-button {
   background: var(--color-hc-bg) !important;
   border-color: var(--color-hc-primary) !important;
 }
+/* ADICIONE ESTAS CLASSES ao style.css existente (após .menu-card) */
+
+/* ========================================
+   CARDÁPIO ADAPTATIVO - FILTROS
+   ======================================== */
+.menu-filters {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-sm);
+  margin: var(--space-xl) 0;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  padding: var(--space-sm) var(--space-lg);
+  background: transparent;
+  border: 2px solid var(--color-secondary);
+  color: var(--color-text);
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-weight: 500;
+  font-size: var(--font-size-sm);
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.filter-btn.active,
+.filter-btn:hover,
+.filter-btn:focus {
+  background: var(--color-primary);
+  color: var(--color-light);
+  border-color: var(--color-primary);
+  transform: translateY(-2px);
+}
+
+.menu-search {
+  position: relative;
+  max-width: 400px;
+  margin: 0 auto var(--space-2xl);
+}
+
+#menu-search {
+  width: 100%;
+  padding: var(--space-lg) var(--space-xl) var(--space-lg) 3rem;
+  border: 2px solid #e2e8f0;
+  border-radius: var(--radius);
+  font-size: var(--font-size-base);
+  transition: all 0.3s ease;
+}
+
+#menu-search:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow);
+}
+
+.search-icon {
+  position: absolute;
+  left: var(--space-xl);
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  font-size: var(--font-size-lg);
+}
+
+/* ========================================
+   MENU CARDS COM CATEGORIAS
+   ======================================== */
+.menu-card {
+  position: relative;
+  background: var(--color-light);
+  padding: var(--space-lg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s ease;
+  border-top: 4px solid transparent;
+}
+
+.menu-card.category-bebidas { border-top-color: #3b82f6; }
+.menu-card.category-comidas { border-top-color: #10b981; }
+.menu-card.category-doces { border-top-color: #f59e0b; }
+.menu-card.category-especiais { border-top-color: #8b5cf6; }
+.menu-card.hidden { 
+  display: none; 
+  opacity: 0 !important;
+  transform: translateY(30px) !important;
+}
+
+.menu-card h3 {
+  margin-bottom: var(--space-sm);
+  color: var(--color-primary);
+}
+
+.menu-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+  margin: var(--space-sm) 0;
+}
+
+.tag {
+  background: var(--color-accent);
+  color: var(--color-primary);
+  padding: 0.25rem 0.5rem;
+  border-radius: 9999px;
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+}
+
+/* ========================================
+   MELHORIAS VISUAIS
+   ======================================== */
+.hero-subtitle {
+  font-size: clamp(1.125rem, 2.5vw, 1.25rem);
+}
+
+.contact-icon {
+  font-size: 3rem;
+  display: block;
+  margin-bottom: var(--space-md);
+  text-align: center;
+}
+
+/* ========================================
+   RESPONSIVO MELHORADO
+   ======================================== */
+@media (max-width: 768px) {
+  .menu-filters {
+    justify-content: flex-start;
+    overflow-x: auto;
+    padding-bottom: var(--space-sm);
+  }
+  
+  .filter-btn {
+    flex-shrink: 0;
+    min-width: 80px;
+  }
+}
+
+body.high-contrast .menu-card {
+  border-top-color: var(--color-hc-primary) !important;
+  background: var(--color-hc-bg) !important;
+}
