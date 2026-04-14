@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Café Curitiba | Cafeteria Artesanal Premium</title>
+    <title>Café Guarapuava | Cafeteria Artesanal Premium</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
@@ -18,7 +18,7 @@
     <header class="header" role="banner">
         <nav class="nav-container" role="navigation" aria-label="Navegação principal">
             <div class="nav-brand">
-                <h1><a href="#home" aria-label="Café Curitiba">☕ Café Curitiba</a></h1>
+                <h1><a href="#home" aria-label="Café Guarapuava">☕ Café Guarapuava</a></h1>
             </div>
             <button class="menu-toggle" aria-label="Abrir menu" aria-expanded="false">
                 <span></span>
@@ -38,29 +38,37 @@
     <main>
         <section id="home" class="hero" role="banner" aria-labelledby="hero-title">
             <div class="hero-content">
-                <h2 id="hero-title" class="hero-title">O Melhor Café de Curitiba</h2>
-                <p class="hero-subtitle">Grãos selecionados, torra artesanal e ambiente acolhedor no coração da cidade.</p>
+                <h2 id="hero-title" class="hero-title">O Melhor Café de Guarapuava</h2>
+                <p class="hero-subtitle">Grãos do planalto paranaense, torra artesanal no coração dos Campos Gerais.</p>
                 <button class="cta-button" aria-label="Reserve sua mesa agora">Reservar Mesa</button>
             </div>
         </section>
 
         <section id="about" class="about" aria-labelledby="about-title">
-            <h2 id="about-title">Nossa História</h2>
+            <h2 id="about-title">Nossa Essência</h2>
             <div class="about-content" id="about-content"></div>
         </section>
 
+        <!-- CARDÁPIO ADAPTATIVO APRIMORADO -->
         <section id="menu" class="menu-section" aria-labelledby="menu-title">
-            <h2 id="menu-title">Nosso Cardápio</h2>
-            <div class="tabs-container" role="tablist" aria-label="Cardápio">
-                <button class="tab-button active" role="tab" aria-selected="true" aria-controls="drinks" tabindex="0">Bebidas</button>
-                <button class="tab-button" role="tab" aria-selected="false" aria-controls="food" tabindex="-1">Comidas</button>
-                <button class="tab-button" role="tab" aria-selected="false" aria-controls="specials" tabindex="-1">Destaques</button>
+            <h2 id="menu-title">Cardápio Completo</h2>
+            
+            <!-- Filtros Adaptativos -->
+            <div class="menu-filters" role="group" aria-label="Filtros do cardápio">
+                <button class="filter-btn active" data-filter="all">Todos</button>
+                <button class="filter-btn" data-filter="bebidas">Bebidas</button>
+                <button class="filter-btn" data-filter="comidas">Comidas</button>
+                <button class="filter-btn" data-filter="doces">Doces</button>
+                <button class="filter-btn" data-filter="especiais">Especiais</button>
             </div>
-            <div class="tabs-content">
-                <div id="drinks" class="tab-panel active" role="tabpanel" tabindex="0"></div>
-                <div id="food" class="tab-panel" role="tabpanel" tabindex="0"></div>
-                <div id="specials" class="tab-panel" role="tabpanel" tabindex="0"></div>
+            
+            <!-- Busca -->
+            <div class="menu-search">
+                <input type="text" id="menu-search" placeholder="Buscar no cardápio..." aria-label="Buscar itens do cardápio">
+                <span class="search-icon">🔍</span>
             </div>
+            
+            <div class="menu-grid" id="menu-grid" role="list" aria-label="Itens do cardápio"></div>
         </section>
 
         <section id="events" class="events" aria-labelledby="events-title">
@@ -74,11 +82,12 @@
         </section>
 
         <section id="contact" class="contact" aria-labelledby="contact-title">
-            <h2 id="contact-title">Entre em Contato</h2>
+            <h2 id="contact-title">Visite-nos em Guarapuava</h2>
             <div class="contact-content">
                 <div class="contact-info">
-                    <p>R. XV de Novembro, 123<br>Centro - Curitiba/PR</p>
-                    <p>☎️ (41) 9999-1234<br>📧 contato@cafecuritiba.com.br</p>
+                    <div class="contact-icon">📍</div>
+                    <p><strong>Av. Pref. Moacir J. Silvestri, 1500</strong><br>CX Postal - Guarapuava/PR<br>CEP: 85010-190</p>
+                    <p>☎️ (42) 9999-1234<br>📧 oi@cafeguarapuava.com.br<br>🕒 Seg-Sáb: 7h-20h</p>
                 </div>
                 <form class="contact-form" aria-labelledby="contact-title">
                     <label for="name">Nome:</label>
@@ -97,7 +106,7 @@
     </main>
 
     <footer class="footer" role="contentinfo">
-        <p>&copy; 2026 Café Curitiba. Todos os direitos reservados.</p>
+        <p>&copy; 2026 Café Guarapuava. Campos Gerais com sabor único. ☕</p>
     </footer>
 
     <script src="script.js"></script>
