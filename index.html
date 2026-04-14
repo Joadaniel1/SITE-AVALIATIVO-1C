@@ -3,98 +3,132 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Café Guarapuava | Cafeteria Artesanal Premium</title>
+    <title>Café Guarapuava | Premium Coffee House</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <div class="accessibility-controls" role="region" aria-label="Controles de Acessibilidade">
-        <button id="font-smaller" class="accessibility-btn" aria-label="Diminuir tamanho da fonte">A-</button>
-        <button id="font-larger" class="accessibility-btn" aria-label="Aumentar tamanho da fonte">A+</button>
-        <button id="high-contrast" class="accessibility-btn" aria-label="Ativar alto contraste" aria-pressed="false">HC</button>
+    <!-- Acessibilidade -->
+    <div class="accessibility-controls">
+        <button id="font-smaller" class="accessibility-btn" aria-label="Diminuir fonte"><i class="fas fa-minus"></i></button>
+        <button id="font-larger" class="accessibility-btn" aria-label="Aumentar fonte"><i class="fas fa-plus"></i></button>
+        <button id="high-contrast" class="accessibility-btn" aria-label="Alto contraste" aria-pressed="false"><i class="fas fa-eye"></i></button>
     </div>
 
-    <header class="header" role="banner">
-        <nav class="nav-container" role="navigation" aria-label="Navegação principal">
+    <!-- Header Fixo -->
+    <header class="header">
+        <nav class="nav-container">
             <div class="nav-brand">
-                <h1><a href="#home" aria-label="Café Guarapuava">☕ Café Guarapuava</a></h1>
+                <a href="#home" aria-label="Café Guarapuava">
+                    <i class="fas fa-coffee"></i> Café Guarapuava
+                </a>
             </div>
-            <button class="menu-toggle" aria-label="Abrir menu" aria-expanded="false">
+            <button class="menu-toggle" aria-label="Menu" aria-expanded="false">
                 <span></span><span></span><span></span>
             </button>
-            <ul class="nav-menu" role="menubar">
-                <li><a href="#home" role="menuitem">Início</a></li>
-                <li><a href="#about" role="menuitem">Sobre</a></li>
-                <li><a href="#menu" role="menuitem">Cardápio</a></li>
-                <li><a href="#events" role="menuitem">Eventos</a></li>
-                <li><a href="#contact" role="menuitem">Contato</a></li>
+            <ul class="nav-menu">
+                <li><a href="#home">Início</a></li>
+                <li><a href="#about">Sobre</a></li>
+                <li><a href="#menu">Cardápio</a></li>
+                <li><a href="#events">Eventos</a></li>
+                <li><a href="#contact">Contato</a></li>
             </ul>
         </nav>
     </header>
 
     <main>
-        <section id="home" class="hero" role="banner" aria-labelledby="hero-title">
+        <!-- Hero -->
+        <section id="home" class="hero">
             <div class="hero-content">
-                <h2 id="hero-title" class="hero-title">O Melhor Café de Guarapuava</h2>
-                <p class="hero-subtitle">Grãos do planalto paranaense, torra artesanal no coração dos Campos Gerais.</p>
-                <button class="cta-button" aria-label="Reserve sua mesa agora">Reservar Mesa</button>
+                <h1 class="hero-title">Café Premium<br><span>dos Campos Gerais</span></h1>
+                <p class="hero-subtitle">Grãos selecionados do planalto paranaense • Torra artesanal em Guarapuava</p>
+                <div class="hero-buttons">
+                    <a href="#menu" class="cta-button primary">Ver Cardápio</a>
+                    <a href="#contact" class="cta-button secondary">Reservar</a>
+                </div>
             </div>
         </section>
 
-        <section id="about" class="about" aria-labelledby="about-title">
-            <h2 id="about-title">Nossa Essência</h2>
+        <!-- Sobre -->
+        <section id="about" class="section about">
+            <h2 class="section-title">Nossa Essência</h2>
             <div class="about-content" id="about-content"></div>
         </section>
 
-        <section id="menu" class="menu-section" aria-labelledby="menu-title">
-            <h2 id="menu-title">Cardápio Completo</h2>
-            <div class="menu-filters" role="group" aria-label="Filtros do cardápio">
-                <button class="filter-btn active" data-filter="all">Todos</button>
-                <button class="filter-btn" data-filter="bebidas">Bebidas</button>
-                <button class="filter-btn" data-filter="comidas">Comidas</button>
-                <button class="filter-btn" data-filter="doces">Doces</button>
-                <button class="filter-btn" data-filter="especiais">Especiais</button>
+        <!-- Cardápio -->
+        <section id="menu" class="section menu-section">
+            <h2 class="section-title">Cardápio Completo</h2>
+            <div class="menu-header">
+                <div class="menu-filters" role="group" aria-label="Filtros">
+                    <button class="filter-btn active" data-filter="all"><i class="fas fa-list"></i> Todos</button>
+                    <button class="filter-btn" data-filter="bebidas"><i class="fas fa-coffee"></i> Bebidas</button>
+                    <button class="filter-btn" data-filter="comidas"><i class="fas fa-utensils"></i> Comidas</button>
+                    <button class="filter-btn" data-filter="doces"><i class="fas fa-cake"></i> Doces</button>
+                    <button class="filter-btn" data-filter="especiais"><i class="fas fa-star"></i> Especiais</button>
+                </div>
+                <div class="menu-search">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" id="menu-search" placeholder="Buscar café, doce..." aria-label="Buscar">
+                </div>
             </div>
-            <div class="menu-search">
-                <input type="text" id="menu-search" placeholder="Buscar no cardápio..." aria-label="Buscar itens do cardápio">
-                <span class="search-icon">🔍</span>
-            </div>
-            <div class="menu-grid" id="menu-grid" role="list" aria-label="Itens do cardápio"></div>
+            <div class="menu-grid" id="menu-grid"></div>
         </section>
 
-        <section id="events" class="events" aria-labelledby="events-title">
-            <h2 id="events-title">Próximos Eventos</h2>
-            <div class="carousel-container" role="region" aria-label="Carrossel de eventos">
-                <button class="carousel-prev" aria-label="Evento anterior">‹</button>
-                <div class="carousel-track" id="carousel-track" role="list" aria-label="Lista de eventos"></div>
-                <button class="carousel-next" aria-label="Próximo evento">›</button>
-                <div class="carousel-dots" id="carousel-dots" aria-label="Indicadores de carrossel"></div>
+        <!-- Eventos -->
+        <section id="events" class="section events">
+            <h2 class="section-title">Próximos Eventos</h2>
+            <div class="carousel-container">
+                <button class="carousel-btn prev" aria-label="Anterior"><i class="fas fa-chevron-left"></i></button>
+                <div class="carousel-track" id="carousel-track"></div>
+                <button class="carousel-btn next" aria-label="Próximo"><i class="fas fa-chevron-right"></i></button>
+                <div class="carousel-dots" id="carousel-dots"></div>
             </div>
         </section>
 
-        <section id="contact" class="contact" aria-labelledby="contact-title">
-            <h2 id="contact-title">Visite-nos em Guarapuava</h2>
+        <!-- Contato -->
+        <section id="contact" class="section contact">
+            <h2 class="section-title">Visite-nos</h2>
             <div class="contact-content">
                 <div class="contact-info">
-                    <div class="contact-icon">📍</div>
-                    <p><strong>Av. Pref. Moacir J. Silvestri, 1500</strong><br>CX Postal - Guarapuava/PR<br>CEP: 85010-190</p>
-                    <p>☎️ (42) 9999-1234<br>📧 oi@cafeguarapuava.com.br<br>🕒 Seg-Sáb: 7h-20h</p>
+                    <div class="contact-card">
+                        <i class="fas fa-map-marker-alt contact-icon"></i>
+                        <div>
+                            <h3>Endereço</h3>
+                            <p>Av. Pref. Moacir J. Silvestri, 1500<br>CX Postal, Guarapuava/PR<br>CEP: 85010-190</p>
+                        </div>
+                    </div>
+                    <div class="contact-card">
+                        <i class="fas fa-clock contact-icon"></i>
+                        <div>
+                            <h3>Horário</h3>
+                            <p>Seg-Sáb: 7h-20h<br>Dom: 8h-18h</p>
+                        </div>
+                    </div>
                 </div>
-                <form class="contact-form" aria-labelledby="contact-title">
-                    <label for="name">Nome:</label>
-                    <input type="text" id="name" name="name" required aria-required="true">
-                    <label for="email">E-mail:</label>
-                    <input type="email" id="email" name="email" required aria-required="true">
-                    <label for="message">Mensagem:</label>
-                    <textarea id="message" name="message" rows="5" required aria-required="true"></textarea>
-                    <button type="submit">Enviar Mensagem</button>
+                <form class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Nome</label>
+                        <input type="text" id="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">E-mail</label>
+                        <input type="email" id="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Mensagem</label>
+                        <textarea id="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="cta-button primary">Enviar Mensagem</button>
                 </form>
             </div>
         </section>
     </main>
 
-    <footer class="footer" role="contentinfo">
-        <p>&copy; 2026 Café Guarapuava. Campos Gerais com sabor único. ☕</p>
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2026 Café Guarapuava. <i class="fas fa-heart"></i> Feito com paixão nos Campos Gerais.</p>
+        </div>
     </footer>
 
     <script src="script.js"></script>
