@@ -568,148 +568,266 @@ body.high-contrast .tab-button {
   background: var(--color-hc-bg) !important;
   border-color: var(--color-hc-primary) !important;
 }
-/* ADICIONE ESTAS CLASSES ao style.css existente (após .menu-card) */
+// ========================================
+// CARDÁPIO ADAPTATIVO - DADOS GUARAPUAVA
+// ========================================
+const data = {
+    about: [
+        {
+            title: "Grãos do Planalto",
+            content: "Cafés premiados de Cruz Machado e Fernandes Pinheiro. Terroir único dos Campos Gerais a 1100m altitude.",
+            icon: "🌄"
+        },
+        {
+            title: "Torra Local",
+            content: "Torra lenta em Guarapuava com equipamentos italianos. Frescor máximo colhido a apenas 2h de distância.",
+            icon: "🔥"
+        },
+        {
+            title: "Sabor Paraná",
+            content: "Premiados no Cup of Excellence. Destaques nacionais com pontuação SCA acima de 87 pontos.",
+            icon: "🥇"
+        }
+    ],
+    
+    // CARDÁPIO ADAPTATIVO UNIFICADO
+    menu: [
+        // BEBIDAS
+        { 
+            name: "Espresso Tradicional", 
+            price: "R$ 8,00", 
+            desc: "25ml de pura intensidade do planalto paranaense", 
+            category: "bebidas", 
+            tags: ["clássico", "rápido"],
+            time: "1min"
+        },
+        { 
+            name: "Cappuccino Guarapuava", 
+            price: "R$ 12,00", 
+            desc: "Espresso duplo + leite dos laticínios locais", 
+            category: "bebidas", 
+            tags: ["cremoso", "tradicional"],
+            time: "2min"
+        },
+        { 
+            name: "Chemex Paraná", 
+            price: "R$ 18,00", 
+            desc: "Pour-over de café vencedor estadual 2025", 
+            category: "bebidas", 
+            tags: ["filtrado", "limpo"],
+            time: "4min"
+        },
+        { 
+            name: "Cold Brew Reserva", 
+            price: "R$ 16,00", 
+            desc: "18h extração fria de Fernandes Pinheiro", 
+            category: "bebidas", 
+            tags: ["gelado", "suave"],
+            time: "pronto"
+        },
+        
+        // COMIDAS
+        { 
+            name: "Pão de Queijo Mineiro", 
+            price: "R$ 8,00", 
+            desc: "Requeijão artesanal de São João do Triunfo", 
+            category: "comidas", 
+            tags: ["quente", "tradicional"],
+            time: "2min"
+        },
+        { 
+            name: "Croissant Francês", 
+            price: "R$ 10,00", 
+            desc: "Manteiga bordalesa, forno a lenha local", 
+            category: "comidas", 
+            tags: ["crocante", "manteiga"],
+            time: "1min"
+        },
+        { 
+            name: "Tapioca Salgada", 
+            price: "R$ 14,00", 
+            desc: "Goiabada cascavelense + queijo paranaense", 
+            category: "comidas", 
+            tags: ["rápida", "regional"],
+            time: "3min"
+        },
+        
+        // DOCES
+        { 
+            name: "Torta de Limão", 
+            price: "R$ 12,00", 
+            desc: "Limões orgânicos do Sudoeste + merengue", 
+            category: "doces", 
+            tags: ["ácida", "fresca"],
+            time: "pronto"
+        },
+        { 
+            name: "Brigadeiro 3 Corações", 
+            price: "R$ 6,00", 
+            desc: "4un | Chocolate 70% + granulado artesanal", 
+            category: "doces", 
+            tags: ["clássico", "porção"],
+            time: "pronto"
+        },
+        { 
+            name: "Cookie Chunk", 
+            price: "R$ 9,00", 
+            desc: "Chocolate belga + castanha-do-pará", 
+            category: "doces", 
+            tags: ["crocrante", "gourmet"],
+            time: "1min"
+        },
+        
+        // ESPECIAIS
+        { 
+            name: "Café do Mês", 
+            price: "R$ 22,00", 
+            desc: "Edição 04/26: Catuaí Amarelo 88 SCA", 
+            category: "especiais", 
+            tags: ["limitado", "premium"],
+            time: "4min"
+        },
+        { 
+            name: "Combo Executivo", 
+            price: "R$ 28,00", 
+            desc: "Espresso + Croissant + Suco natural", 
+            category: "especiais", 
+            tags: ["combo", "rápido"],
+            time: "3min"
+        },
+        { 
+            name: "Matcha Latte Vegano", 
+            price: "R$ 16,00", 
+            desc: "Chá japonês + leite de aveia caseiro", 
+            category: "especiais", 
+            tags: ["vegano", "leve"],
+            time: "2min"
+        }
+    ],
+    
+    events: [
+        {
+            title: "Workshop Barista",
+            date: "18/04/2026",
+            description: "Técnicas profissionais + degustação guiada",
+            image: "coffee-workshop"
+        },
+        {
+            title: "Copa Campos Gerais",
+            date: "22/04/2026",
+            description: "Competição regional de baristas",
+            image: "coffee-cupping"
+        },
+        {
+            title: "Seresta Paranaense",
+            date: "25/04/2026",
+            description: "Violão + gaita ponto + harmonização",
+            image: "jazz-night"
+        }
+    ]
+};
 
-/* ========================================
-   CARDÁPIO ADAPTATIVO - FILTROS
-   ======================================== */
-.menu-filters {
-  display: flex;
-  justify-content: center;
-  gap: var(--space-sm);
-  margin: var(--space-xl) 0;
-  flex-wrap: wrap;
+// ========================================
+// INICIALIZAÇÃO ATUALIZADA
+// ========================================
+document.addEventListener('DOMContentLoaded', function() {
+    initAccessibility();
+    renderAbout();
+    initAdaptiveMenu();  // NOVO: Cardápio Adaptativo
+    initCarousel();
+    initNavigation();
+    initScrollReveal();
+    initContactForm();
+});
+
+// ========================================
+// CARDÁPIO ADAPTATIVO - NOVA FUNÇÃO
+// ========================================
+function initAdaptiveMenu() {
+    renderMenuItems(data.menu);
+    
+    // Filtros
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const filter = btn.dataset.filter;
+            setActiveFilter(btn);
+            filterItems(filter);
+        });
+    });
+    
+    // Busca
+    const searchInput = document.getElementById('menu-search');
+    searchInput.addEventListener('input', (e) => {
+        filterBySearch(e.target.value);
+    });
 }
 
-.filter-btn {
-  padding: var(--space-sm) var(--space-lg);
-  background: transparent;
-  border: 2px solid var(--color-secondary);
-  color: var(--color-text);
-  border-radius: var(--radius);
-  cursor: pointer;
-  font-weight: 500;
-  font-size: var(--font-size-sm);
-  transition: all 0.3s ease;
-  white-space: nowrap;
+function renderMenuItems(items) {
+    const container = document.getElementById('menu-grid');
+    container.innerHTML = '';
+    
+    items.forEach((item, index) => {
+        const card = document.createElement('article');
+        card.className = `menu-card category-${item.category} reveal`;
+        card.setAttribute('role', 'listitem');
+        card.setAttribute('data-category', item.category);
+        card.setAttribute('data-search', item.name.toLowerCase());
+        card.innerHTML = `
+            <h3>${item.name}</h3>
+            <p class="menu-price">${item.price}</p>
+            <p>${item.desc}</p>
+            <div class="menu-tags">
+                ${item.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+            </div>
+            <div style="margin-top: var(--space-md); color: #6b7280; font-size: var(--font-size-sm);">
+                ⏱️ ${item.time}
+            </div>
+        `;
+        container.appendChild(card);
+    });
 }
 
-.filter-btn.active,
-.filter-btn:hover,
-.filter-btn:focus {
-  background: var(--color-primary);
-  color: var(--color-light);
-  border-color: var(--color-primary);
-  transform: translateY(-2px);
+function setActiveFilter(activeBtn) {
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.classList.remove('active');
+    });
+    activeBtn.classList.add('active');
 }
 
-.menu-search {
-  position: relative;
-  max-width: 400px;
-  margin: 0 auto var(--space-2xl);
+function filterItems(filter) {
+    const cards = document.querySelectorAll('.menu-card');
+    
+    cards.forEach(card => {
+        const category = card.dataset.category;
+        
+        if (filter === 'all' || category === filter) {
+            card.classList.remove('hidden');
+            setTimeout(() => card.classList.add('fade-in'), 100);
+        } else {
+            card.classList.remove('fade-in');
+            card.classList.add('hidden');
+        }
+    });
 }
 
-#menu-search {
-  width: 100%;
-  padding: var(--space-lg) var(--space-xl) var(--space-lg) 3rem;
-  border: 2px solid #e2e8f0;
-  border-radius: var(--radius);
-  font-size: var(--font-size-base);
-  transition: all 0.3s ease;
+function filterBySearch(query) {
+    const cards = document.querySelectorAll('.menu-card');
+    const normalizedQuery = query.toLowerCase().trim();
+    
+    cards.forEach(card => {
+        const searchText = card.dataset.search;
+        if (normalizedQuery === '' || searchText.includes(normalizedQuery)) {
+            card.classList.remove('hidden');
+        } else {
+            card.classList.add('hidden');
+        }
+    });
 }
 
-#menu-search:focus {
-  outline: none;
-  border-color: var(--color-primary);
-  box-shadow: var(--shadow);
-}
+// ========================================
+// MANTER TODAS AS OUTRAS FUNÇÕES EXISTENTES
+// ========================================
+// (Copie todas as outras funções do script.js anterior: initAccessibility, initCarousel, etc.)
+// Apenas substitua a seção data e a inicialização acima
 
-.search-icon {
-  position: absolute;
-  left: var(--space-xl);
-  top: 50%;
-  transform: translateY(-50%);
-  pointer-events: none;
-  font-size: var(--font-size-lg);
-}
-
-/* ========================================
-   MENU CARDS COM CATEGORIAS
-   ======================================== */
-.menu-card {
-  position: relative;
-  background: var(--color-light);
-  padding: var(--space-lg);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.6s ease;
-  border-top: 4px solid transparent;
-}
-
-.menu-card.category-bebidas { border-top-color: #3b82f6; }
-.menu-card.category-comidas { border-top-color: #10b981; }
-.menu-card.category-doces { border-top-color: #f59e0b; }
-.menu-card.category-especiais { border-top-color: #8b5cf6; }
-.menu-card.hidden { 
-  display: none; 
-  opacity: 0 !important;
-  transform: translateY(30px) !important;
-}
-
-.menu-card h3 {
-  margin-bottom: var(--space-sm);
-  color: var(--color-primary);
-}
-
-.menu-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-xs);
-  margin: var(--space-sm) 0;
-}
-
-.tag {
-  background: var(--color-accent);
-  color: var(--color-primary);
-  padding: 0.25rem 0.5rem;
-  border-radius: 9999px;
-  font-size: var(--font-size-sm);
-  font-weight: 500;
-}
-
-/* ========================================
-   MELHORIAS VISUAIS
-   ======================================== */
-.hero-subtitle {
-  font-size: clamp(1.125rem, 2.5vw, 1.25rem);
-}
-
-.contact-icon {
-  font-size: 3rem;
-  display: block;
-  margin-bottom: var(--space-md);
-  text-align: center;
-}
-
-/* ========================================
-   RESPONSIVO MELHORADO
-   ======================================== */
-@media (max-width: 768px) {
-  .menu-filters {
-    justify-content: flex-start;
-    overflow-x: auto;
-    padding-bottom: var(--space-sm);
-  }
-  
-  .filter-btn {
-    flex-shrink: 0;
-    min-width: 80px;
-  }
-}
-
-body.high-contrast .menu-card {
-  border-top-color: var(--color-hc-primary) !important;
-  background: var(--color-hc-bg) !important;
-}
+// Para completar, adicione aqui todas as outras funções do script anterior...
